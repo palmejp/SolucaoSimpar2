@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SolucaoSimpar2.Models.Viagem>
+
+@{
+    ViewData["Title"] = "Viagem";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Incluir nova viagem</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataViagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocalEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocalSaida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KmTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motorista)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataViagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocalEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocalSaida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KmTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motorista.MotoristaId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ViagemId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ViagemId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ViagemId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,70 @@
+﻿@model SolucaoSimpar2.ViewModel.ViagemCreateModel
+
+@{
+    ViewData["Title"] = "Criar";
+    
+}
+
+@if(null != TempData["alertMessage"])
+    {
+        <script type="text/javascript">
+            alert('@(TempData["alertMessage"])');
+            window.location.href="@Url.Action("Index", "Home")";
+        </script>
+    }
+else{
+<div style="align-content:center;"> 
+    <h1>Criar</h1>
+
+    <h4>Viagem</h4>
+    <hr />
+    <div class="panel panel-default">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Viagem.DataViagem" class="control-label"></label>
+                    <input asp-for="@Model.Viagem.DataViagem" class="form-control"/>
+                    <span asp-validation-for="@Model.Viagem.DataViagem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Viagem.LocalEntrega" class="control-label"></label>
+                    <input asp-for="@Model.Viagem.LocalEntrega" class="form-control" />
+                    <span asp-validation-for="@Model.Viagem.LocalEntrega" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Viagem.LocalSaida" class="control-label"></label>
+                    <input asp-for="@Model.Viagem.LocalSaida" class="form-control" />
+                    <span asp-validation-for="@Model.Viagem.LocalSaida" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Viagem.KmTotal" class="control-label"></label>
+                    <input asp-for="@Model.Viagem.KmTotal" class="form-control" />
+                    <span asp-validation-for="@Model.Viagem.KmTotal" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Viagem.MotoristaId" class="control-label"></label>
+                    <select asp-for="@Model.Viagem.MotoristaId" class="form-control" asp-items="@Model.Motoristas">
+                        <option value="">Selecione um motorista</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div>
+            <a asp-action="Index">Voltar para a lista</a>
+        </div>
+    </div>
+</div>
+}
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
